@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex,nofollow">
+<title>Partenze già piene</title>
+<style>
+:root{--bg:#fff;--soft:#f5f5f7;--line:#d2d2d7;--text:#1d1d1f;--grey:#6e6e73;--ok:#1d1d1f}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--grey)}
+header{padding:64px 0 40px;text-align:center}
+h1{font-size:clamp(38px,8vw,64px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:12px 0}
+.sub{font-size:clamp(17px,3.6vw,21px);color:var(--grey);max-width:520px;margin:0 auto}
+.demo{margin-top:20px;font-size:13px;color:var(--grey);background:var(--soft);border-radius:999px;display:inline-block;padding:6px 14px}
+section{padding:40px 0}
+h2{font-size:clamp(26px,5vw,36px);font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+.lead{color:var(--grey);margin-bottom:28px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:var(--soft);border-radius:20px;padding:22px}
+.card b{display:block;font-size:13px;color:var(--grey);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.card p{font-size:16px}
+.card.dark{background:var(--text);color:#fff}
+.card.dark b{color:#a1a1a6}
+/* mappa */
+.phase{margin-bottom:8px}
+.phead{display:flex;align-items:center;gap:12px;margin:28px 0 14px}
+.num{width:34px;height:34px;border-radius:50%;background:var(--text);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex:none}
+.phead h3{font-size:20px;letter-spacing:-.01em}
+.phead span{color:var(--grey);font-size:14px;display:block;font-weight:400}
+.nodes{position:relative;margin-left:16px;padding-left:28px;border-left:2px solid var(--line)}
+.node{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:12px}
+.node:before{content:"";position:absolute;left:-36px;top:20px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--text)}
+.node strong{display:block;font-size:16px}
+.node small{display:block;color:var(--grey);font-size:14px;margin-top:2px}
+.chip{display:inline-block;font-size:12px;font-weight:600;background:var(--soft);border-radius:8px;padding:3px 8px;margin-top:8px;color:var(--text)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.split .node{margin:0}
+.split .node:before{display:none}
+.yes{border-color:var(--text);border-width:2px}
+.loop{margin:20px 0 0;text-align:center;background:var(--soft);border-radius:20px;padding:22px}
+.loop .arrow{font-size:28px;display:block;margin-bottom:4px}
+.loop p{color:var(--grey);font-size:15px}
+/* numeri */
+.funnel{display:grid;gap:10px}
+.bar{background:var(--soft);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:relative;overflow:hidden}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:#e8e8ed;border-radius:14px;width:0;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.bar span,.bar b{position:relative}
+.bar b{font-size:20px}
+.note{font-size:13px;color:var(--grey);margin-top:10px}
+.list{display:grid;gap:12px}
+.li{display:flex;gap:14px;align-items:flex-start;background:var(--soft);border-radius:18px;padding:18px}
+.li .ic{width:28px;height:28px;border-radius:8px;background:var(--text);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+.li strong{display:block}
+.li small{color:var(--grey);font-size:14px}
+footer{padding:48px 0 64px;text-align:center;color:var(--grey);font-size:14px;border-top:1px solid var(--line);margin-top:24px}
+footer strong{color:var(--text);display:block;font-size:17px;margin-bottom:4px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (max-width:520px){.vs,.split{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+.exp{position:fixed;inset:0;background:#fff;display:none;align-items:center;justify-content:center;text-align:center;padding:24px;z-index:99}.exp.on{display:flex}.exp h2{font-size:28px;margin-bottom:8px}.exp p{color:#6e6e73}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="rv">
+  <span class="tag">Automazione · Agenzie di viaggi</span>
+  <h1>Partenze già piene.</h1>
+  <p class="sub">Quando apri le date di un viaggio di gruppo, le persone sono già lì che aspettano.</p>
+  <span class="demo">Demo con dati inventati · esempio: gruppo Dubai</span>
+</header>
+
+<section class="rv">
+  <div class="vs">
+    <div class="card"><b>Oggi</b><p>Apri una partenza e cerchi i partecipanti uno per uno, tra telefonate e messaggi.</p></div>
+    <div class="card dark"><b>Con l'automazione</b><p>Ogni commento diventa un contatto. Quando apri il gruppo, sai già a chi scrivere.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="rv">
+    <h2>Come funziona</h2>
+    <p class="lead">Quattro fasi, un solo giro che si ripete da solo.</p>
+  </div>
+
+  <div class="phase rv">
+    <div class="phead"><div class="num">1</div><h3>Contenuti<span>Nessuno dello staff davanti alla telecamera</span></h3></div>
+    <div class="nodes">
+      <div class="node"><strong>Una guida virtuale dell'agenzia</strong><small>Sempre lo stesso volto e la stessa voce in ogni video. Segnalata come contenuto AI.</small></div>
+      <div class="node"><strong>Video tour dalle tue foto vere</strong><small>Hotel e destinazioni prendono vita, senza aggiungere nulla che non c'è.</small></div>
+      <div class="node"><strong>Caroselli e reel</strong><small>«I 5 errori da non fare a Dubai». Più aperture provate, restano quelle che funzionano.</small></div>
+    </div>
+  </div>
+
+  <div class="phase rv">
+    <div class="phead"><div class="num">2</div><h3>Community<span>Ogni commento diventa un contatto</span></h3></div>
+    <div class="nodes">
+      <div class="node"><strong>Pubblicazione all'orario migliore</strong><small>Calcolato sui post reali della tua pagina.</small></div>
+      <div class="node"><strong>Qualcuno commenta «DUBAI»</strong><small>Gli viene chiesto di seguire la pagina.</small><span class="chip">+ follower</span></div>
+      <div class="node"><strong>Riceve la guida in privato</strong><small>Con il bottone per vedere le date del gruppo.</small></div>
+      <div class="node"><strong>Lascia l'email, con il consenso</strong><small>E viene etichettato con la destinazione che gli interessa.</small><span class="chip">+ contatto Dubai</span></div>
+    </div>
+  </div>
+
+  <div class="phase rv">
+    <div class="phead"><div class="num">3</div><h3>Prenotazione<span>Il posto si blocca solo pagando</span></h3></div>
+    <div class="nodes">
+      <div class="node"><strong>Dopo 2 giorni: le date del gruppo</strong><small>Con il programma, le condizioni e le penali, prima di pagare.</small></div>
+      <div class="split">
+        <div class="node yes"><strong>Clicca</strong><small>Paga la caparra con link sicuro: posto bloccato.</small></div>
+        <div class="node"><strong>Non clicca</strong><small>Resta nella community fino alla prossima partenza.</small></div>
+      </div>
+      <div class="node"><strong>Contatore dei posti</strong><small>A gruppo pieno il pagamento si chiude da solo: nessun posto venduto due volte.</small><span class="chip">15 / 15</span></div>
+    </div>
+  </div>
+
+  <div class="phase rv">
+    <div class="phead"><div class="num">4</div><h3>Il viaggio vende il prossimo<span>La faccia ce la mettono i tuoi clienti</span></h3></div>
+    <div class="nodes">
+      <div class="node"><strong>I partecipanti mandano foto e video</strong><small>Con la liberatoria firmata insieme ai documenti del viaggio.</small></div>
+      <div class="node"><strong>Ogni sera, il reel della giornata</strong><small>Montato con i sottotitoli e pubblicato da solo.</small></div>
+    </div>
+  </div>
+
+  <div class="loop rv">
+    <span class="arrow">↺</span>
+    <strong>Chi guarda commenta «DUBAI» e il giro riparte dalla fase 2.</strong>
+    <p>Più viaggi fai, più cresce la community.</p>
+  </div>
+</section>
+
+<section class="rv">
+  <h2>Quale destinazione vende</h2>
+  <p class="lead">Lo sai prima di comprare i voli.</p>
+  <div class="funnel" id="funnel">
+    <div class="bar"><i data-w="100"></i><span>Commenti</span><b>214</b></div>
+    <div class="bar"><i data-w="78"></i><span>Messaggi privati</span><b>168</b></div>
+    <div class="bar"><i data-w="19"></i><span>Click sulle date</span><b>41</b></div>
+    <div class="bar"><i data-w="6"></i><span>Caparre</span><b>12</b></div>
+  </div>
+  <p class="note">Numeri inventati, solo per mostrare un esempio. I risultati dipendono da destinazioni, prezzi e contenuti.</p>
+</section>
+
+<section class="rv">
+  <h2>Cosa ottieni</h2>
+  <div class="list" style="margin-top:20px">
+    <div class="li"><div class="ic">1</div><div><strong>Tempo</strong><small>Niente più ricerca dei partecipanti uno per uno.</small></div></div>
+    <div class="li"><div class="ic">2</div><div><strong>Una community tua</strong><small>Contatti divisi per destinazione, pronti per ogni nuova partenza.</small></div></div>
+    <div class="li"><div class="ic">3</div><div><strong>Decisioni sui numeri</strong><small>Apri i gruppi dove c'è già richiesta.</small></div></div>
+  </div>
+</section>
+
+<section class="rv">
+  <h2>Cosa serve da te</h2>
+  <div class="list" style="margin-top:20px">
+    <div class="li"><div class="ic">✓</div><div><strong>Foto vere di hotel e destinazioni</strong><small>I video partono sempre da lì.</small></div></div>
+    <div class="li"><div class="ic">✓</div><div><strong>Pagina Instagram dell'agenzia</strong><small>Se manca, la apriamo insieme.</small></div></div>
+    <div class="li"><div class="ic">✓</div><div><strong>Conto Stripe per le caparre</strong><small>Gli incassi arrivano direttamente a te; le commissioni sono a carico dell'agenzia.</small></div></div>
+    <div class="li"><div class="ic">✓</div><div><strong>WhatsApp Business API</strong><small>Il numero e i messaggi sono dell'agenzia e a suo carico.</small></div></div>
+  </div>
+</section>
+
+<footer>
+  <strong>Alessandro Mauro</strong>
+  Automazioni, siti e gestionali su misura<br>
+  WhatsApp +39 339 405 2935<br><br>
+  Demo con dati inventati, solo per mostrare un esempio di lavoro.
+</footer>
+
+</div>
+<script>
+document.addEventListener('contextmenu',function(e){e.preventDefault()});
+document.addEventListener('copy',function(e){e.preventDefault()});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.bar i').forEach(function(b){b.style.width=b.dataset.w+'%'});io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+</script>
+<div class="exp" id="exp"><div><h2>Questa demo è scaduta.</h2><p>Per rivederla scrivimi su WhatsApp: +39 339 405 2935</p></div></div>
+<script>
+(function(){try{var m=location.hash.match(/s=([0-9a-z]+)/);var ok=false;if(m){var n=parseInt(m[1],36);if((n-13)%7===0){var d=String((n-13)/7);var t=new Date(+d.slice(0,4),+d.slice(4,6)-1,+d.slice(6,8),23,59,59);ok=Date.now()<=t.getTime();}}if(!ok){document.getElementById('exp').classList.add('on');document.querySelector('.wrap').style.display='none';}}catch(e){}})();
+</script>
+</body>
+</html>
