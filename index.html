@@ -469,6 +469,21 @@ html.lg .wow>div{background-color:var(--glass-solid);border-color:var(--edge-g);
 
 .hb.eh .hbr{grid-template-columns:minmax(110px,34%) minmax(0,1fr) 62px}
 @media (max-width:820px){.hb.eh .hbr{grid-template-columns:minmax(90px,38%) minmax(0,1fr) 58px}}
+.split2{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
+@media (max-width:980px){.split2{grid-template-columns:minmax(0,1fr)}}
+.phone{width:320px;max-width:100%;margin:0 auto;border-radius:44px;padding:12px;background:#1d1d1f;box-shadow:0 20px 50px rgba(0,0,0,.25),inset 0 0 0 2px #3a3a3c}
+.pscreen{background:#f2f2f7;border-radius:34px;min-height:600px;padding:14px 14px 20px;color:#1d1d1f;color-scheme:light;font-family:var(--font)}
+.pbar{display:flex;justify-content:space-between;font-size:12px;padding:2px 10px 12px}
+.phead small{display:block;color:#6e6e73;font-size:12px}.phead b{font-size:22px;letter-spacing:-.02em}
+.phead{padding:0 4px 12px}
+.pcard2{background:#fff;border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.pcard2 small{display:block;color:#6e6e73;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:600;margin-bottom:4px}
+.prow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:7px 0;border-top:1px solid #f0f0f2;font-size:13px}
+.pcard2 small+.prow{border-top:0}
+.prow b{white-space:nowrap;font-weight:600}
+.pbtn{background:#0071e3;color:#fff;border-radius:99px;padding:4px 12px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap}
+.plink{color:#0071e3}
+
 /* ===== Tema scuro (con e senza Liquid Glass) ===== */
 html.dark{--bg:#000;--surface:#1c1c1e;--fg:#f5f5f7;--muted:#98989d;--line:#38383a;--soft:#2c2c2e;--accent:#0a84ff;--accent-bg:rgba(10,132,255,.18);--ink:#2c2c2e;--ok:#30d158;--ok-bg:rgba(48,209,88,.16);--warn:#ffd60a;--warn-bg:rgba(255,214,10,.14);--bad:#ff453a;--bad-bg:rgba(255,69,58,.16);--info:#d1d1d6;--info-bg:rgba(142,142,147,.22);color-scheme:dark}
 html.dark .nav .count.w{background:#ffd60a;color:#1d1d1f}
@@ -554,18 +569,18 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
 
 /* ---------- dati demo (inventati) ---------- */
 var CLIENTI=[
- {id:'c1',nome:'Marco Bianchi',tipo:'Persona fisica',regime:'Forfettario',piva:'Sì',email:'marco.b@esempio.it',tel:'333 000 0101',citta:'Bari',pec:'ok',cassetto:{s:'ok',d:addDays(210)},f24:{s:'ok',m:'Addebito su conto'},firma:'ok'},
+ {id:'c1',nome:'Marco Bianchi',tipo:'Lavoratore autonomo',regime:'Forfettario',piva:'Sì',email:'marco.b@esempio.it',tel:'333 000 0101',citta:'Bari',pec:'ok',cassetto:{s:'ok',d:addDays(210)},f24:{s:'ok',m:'Addebito su conto'},firma:'ok'},
  {id:'c2',nome:'Giulia Rossi',tipo:'Persona fisica',regime:'Lavoratore dipendente',piva:'No',email:'giulia.r@esempio.it',tel:'333 000 0102',citta:'Foggia',pec:'ok',cassetto:{s:'ok',d:addDays(95)},f24:{s:'ok',m:'Saldo zero'},firma:'ok'},
  {id:'c3',nome:'Officina Moretti S.n.c.',tipo:'Società di persone',regime:'Ordinario',piva:'Sì',email:'amministrazione@morettisnc.example',tel:'0881 000 103',citta:'Foggia',pec:'ok',cassetto:{s:'scad',d:addDays(-12)},f24:{s:'ok',m:'Addebito su conto'},firma:'ok'},
- {id:'c4',nome:'Elena Greco',tipo:'Ditta individuale',regime:'Forfettario',piva:'Sì',email:'elena.g@esempio.it',tel:'333 000 0104',citta:'Cerignola',pec:'ok',cassetto:{s:'scad',d:addDays(-6)},f24:{s:'ok',m:'Saldo zero'},firma:'manca'},
+ {id:'c4',nome:'Elena Greco',tipo:'Ditta individuale',regime:'Forfettario',piva:'Sì',email:'elena.g@esempio.it',tel:'333 000 0104',citta:'Cerignola',pec:'ok',cassetto:{s:'scad',d:addDays(-6)},f24:{s:'ok',m:'Addebito su conto'},firma:'manca'},
  {id:'c5',nome:'Ristorante Il Cortile S.r.l.',tipo:'Società di capitali',regime:'Ordinario',piva:'Sì',email:'info@ilcortile.example',tel:'0881 000 105',citta:'Lucera',pec:'ok',cassetto:{s:'ok',d:addDays(48)},f24:{s:'ok',m:'Addebito su conto'},firma:'ok'},
  {id:'c6',nome:'Paolo Ferri',tipo:'Persona fisica',regime:'Lavoratore dipendente',piva:'No',email:'paolo.f@esempio.it',tel:'333 000 0106',citta:'Manfredonia',pec:'manca',cassetto:{s:'manca',d:null},f24:{s:'ok',m:'Saldo zero'},firma:'ok'},
  {id:'c7',nome:'Studio Dentistico Conte',tipo:'Studio associato',regime:'Ordinario',piva:'Sì',email:'segreteria@studioconte.example',tel:'0881 000 107',citta:'Foggia',pec:'ok',cassetto:{s:'ok',d:addDays(140)},f24:{s:'ok',m:'Addebito su conto'},firma:'ok'},
- {id:'c8',nome:'Anna Marino',tipo:'Ditta individuale',regime:'Forfettario',piva:'Sì',email:'anna.m@esempio.it',tel:'333 000 0108',citta:'San Severo',pec:'ok',cassetto:{s:'scad',d:addDays(-3)},f24:{s:'ok',m:'Saldo zero'},firma:'ok'},
+ {id:'c8',nome:'Anna Marino',tipo:'Ditta individuale',regime:'Forfettario',piva:'Sì',email:'anna.m@esempio.it',tel:'333 000 0108',citta:'San Severo',pec:'ok',cassetto:{s:'scad',d:addDays(-3)},f24:{s:'ok',m:'Addebito su conto'},firma:'ok'},
  {id:'c9',nome:'Autolavaggio Riva',tipo:'Ditta individuale',regime:'Ordinario',piva:'Sì',email:'autolavaggioriva@esempio.it',tel:'333 000 0109',citta:'Foggia',pec:'ok',cassetto:{s:'ok',d:addDays(60)},f24:{s:'ok',m:'Addebito su conto'},firma:'ok'},
  {id:'c10',nome:'Lucia Fontana',tipo:'Persona fisica',regime:'Lavoratore dipendente',piva:'No',email:'lucia.f@esempio.it',tel:'333 000 0110',citta:'Bari',pec:'ok',cassetto:{s:'ok',d:addDays(250)},f24:{s:'ok',m:'Saldo zero'},firma:'ok'},
  {id:'c11',nome:'Edilizia Sorrentino S.r.l.',tipo:'Società di capitali',regime:'Ordinario',piva:'Sì',email:'amm@sorrentino.example',tel:'0881 000 111',citta:'Foggia',pec:'ok',cassetto:{s:'ok',d:addDays(18)},f24:{s:'ok',m:'Addebito su conto'},firma:'ok'},
- {id:'c12',nome:'Davide Costa',tipo:'Ditta individuale',regime:'Forfettario',piva:'Sì',email:'davide.c@esempio.it',tel:'333 000 0112',citta:'Troia',pec:'ok',cassetto:{s:'ok',d:addDays(300)},f24:{s:'ok',m:'Saldo zero'},firma:'ok'}
+ {id:'c12',nome:'Davide Costa',tipo:'Ditta individuale',regime:'Forfettario',piva:'Sì',email:'davide.c@esempio.it',tel:'333 000 0112',citta:'Troia',pec:'ok',cassetto:{s:'ok',d:addDays(300)},f24:{s:'ok',m:'Addebito su conto'},firma:'ok'}
 ];
 function cl(id){return CLIENTI.filter(function(c){return c.id===id})[0]}
 var SCAD=[
@@ -575,7 +590,9 @@ var SCAD=[
  {id:'s4',c:'c5',tipo:'F24',desc:'Versamento IVA mensile di ottobre',d:DT(2026,11,16),st:'aperta'},
  {id:'s5',c:'c1',tipo:'Acconti',desc:'Secondo acconto imposta sostitutiva',d:DT(2026,11,30),st:'aperta'},
  {id:'s6',c:'c2',tipo:'730',desc:'Promemoria: conservare le spese detraibili per il 730/2027',d:addDays(12),st:'aperta'},
- {id:'s7',c:'c7',tipo:'F24',desc:'Versamento IVA mensile di ottobre',d:DT(2026,11,16),st:'aperta'},
+ {id:'s7',c:'c7',tipo:'F24',desc:'Ritenute sugli stipendi di ottobre',d:DT(2026,11,16),st:'aperta'},
+ {id:'s19',c:'c9',tipo:'IVA trimestrale',desc:'Versamento IVA del terzo trimestre (con interessi dell\'1%)',d:DT(2026,11,16),st:'aperta'},
+ {id:'s20',c:'c11',tipo:'F24',desc:'Versamento IVA mensile di ottobre',d:DT(2026,11,16),st:'aperta'},
  {id:'s8',c:'c9',tipo:'IVA trimestrale',desc:'Comunicazione LIPE del terzo trimestre',d:DT(2026,11,30),st:'aperta'},
  {id:'s9',c:'c4',tipo:'Contributi INPS',desc:'Terza rata dei contributi fissi commercianti',d:DT(2026,11,16),st:'aperta'},
  {id:'s10',c:'c5',tipo:'Bilanci',desc:'Bozza di pre-chiusura da condividere con l\'amministratore',d:addDays(30),st:'aperta'},
@@ -586,7 +603,7 @@ var SCAD=[
  {id:'s15',c:'c6',tipo:'730',desc:'Rimborso credito IRPEF: sollecito documenti',d:addDays(40),st:'aperta'},
  {id:'s16',c:'c7',tipo:'Acconti',desc:'Secondo acconto IRAP (i redditi sono tassati in capo ai soci)',d:DT(2026,11,30),st:'aperta'},
  {id:'s17',c:'c1',tipo:'Contributi INPS',desc:'Terza rata dei contributi fissi commercianti',d:DT(2026,11,16),st:'aperta'},
- {id:'s18',c:'c9',tipo:'F24',desc:'Versamento IVA mensile di agosto',d:DT(2026,9,16),st:'chiusa'}
+ {id:'s18',c:'c11',tipo:'F24',desc:'Versamento IVA mensile di agosto',d:DT(2026,9,16),st:'chiusa'}
 ];
 var DOCTIPI=['Fatture di acquisto','Estratto conto','Certificazione Unica','Spese detraibili','Contratti e verbali','Fatture emesse'];
 var DOCS=[];
@@ -613,6 +630,9 @@ var PRAT=[
  {id:'p10',c:'c4',t:'Rinnovo delega cassetto fiscale',st:'In attesa del cliente',resp:'Dott.ssa Lorenza (collaboratrice)',ap:addDays(-7),az:'Il cliente deve firmare la delega',note:[]}
 ];
 var PARC=[
+ {n:'2026/038',c:'c4',imp:760,d:addDays(-80),st:'Pagata'},
+ {n:'2026/039',c:'c6',imp:150,d:addDays(-75),st:'Pagata'},
+ {n:'2026/040',c:'c10',imp:150,d:addDays(-70),st:'Pagata'},
  {n:'2026/041',c:'c3',imp:1450,d:addDays(-62),st:'In ritardo'},
  {n:'2026/042',c:'c5',imp:2800,d:addDays(-45),st:'Pagata'},
  {n:'2026/043',c:'c7',imp:1900,d:addDays(-40),st:'Pagata'},
@@ -713,7 +733,27 @@ function amlAlerts(cid){var a=AML[cid],o=[];if(a.liv==='Esclusa')return o;if(dif
 function amlCount(){var n=0;CLIENTI.forEach(function(c){if(amlAlerts(c.id).some(function(x){return x.c==='bad'}))n++});return n}
 var RISCHIO=['','Non significativo','Poco significativo','Abbastanza significativo','Molto significativo'];
 /* ---------- redditività: onorari dell'anno e ore registrate sulle pratiche ---------- */
-var REDD=[['c5',4800,62],['c11',6200,118],['c7',3900,58],['c3',2600,74],['c9',1900,31],['c1',760,9],['c8',840,24],['c4',760,11],['c12',760,10],['c2',150,3],['c6',150,7],['c10',150,2]];
+var REDD=[['c5',7400,96],['c11',6200,118],['c7',3900,58],['c3',2600,74],['c9',1900,31],['c1',760,9],['c8',840,24],['c4',760,11],['c12',760,10],['c2',150,3],['c6',150,7],['c10',150,2]];
+
+/* ---------- IVA e F24 (codici tributo: 6010 IVA di ottobre, 6033 IVA del terzo trimestre) ---------- */
+var IVA=[
+ {c:'c5',per:'Ottobre 2026',tipo:'Mensile',deb:5800,cred:2950,cod:'6010',st:'F24 pronto',note:'Aliquota 10% (ristorazione)'},
+ {c:'c3',per:'Ottobre 2026',tipo:'Mensile',deb:9020,cred:6100,cod:'6010',st:'Calcolata',note:'Settembre non ancora versato: valutare il ravvedimento'},
+ {c:'c11',per:'Ottobre 2026',tipo:'Mensile',deb:18400,cred:12300,cod:'6010',st:'Calcolata',note:''},
+ {c:'c9',per:'Terzo trimestre 2026',tipo:'Trimestrale',deb:7900,cred:3100,cod:'6033',st:'Da calcolare',note:'Ai trimestrali si aggiunge l\'1% di interessi'}
+];
+IVA.forEach(function(x,i){x.id='iv'+i});
+function ivaDue(x){var b=x.deb-x.cred;return x.tipo==='Trimestrale'?Math.round(b*1.01*100)/100:b}
+/* ---------- concordato preventivo biennale 2026-2027 (adesione entro il 2 novembre 2026) ---------- */
+var CPB=[
+ {c:'c3',st:'Ha aderito',prop:62000,prev:66500},
+ {c:'c5',st:'Valutato: non conviene',prop:88000,prev:74000},
+ {c:'c7',st:'Da decidere',prop:118000,prev:121000},
+ {c:'c9',st:'Da decidere',prop:41000,prev:39500},
+ {c:'c11',st:'Ha aderito',prop:146000,prev:152000}
+];
+/* ---------- area clienti ---------- */
+var PORTALE={c1:true,c3:true,c4:true,c5:true,c7:true,c8:true,c9:false,c11:true,c12:true,c2:false,c6:false,c10:true};
 var SYNC={log:[{d:new Date(Date.now()-180000),t:'Foglio «Prima nota 2026» sincronizzato',w:'Automatico'}]};
 function grp(x){return x.replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
 function num(n){var g=n<0;n=Math.abs(n);var p=n.toFixed(2).split('.');return (g?'-':'')+grp(p[0])+','+p[1]}
@@ -721,7 +761,7 @@ function eur0(n){return (n<0?'-':'')+grp(String(Math.round(Math.abs(n))))+' €'
 function pct(n){return (n>=0?'+':'')+n.toLocaleString('it-IT',{maximumFractionDigits:1})+'%'}
 function ago(d){var s=Math.round((Date.now()-d)/1000);if(s<10)return 'adesso';if(s<60)return s+' secondi fa';var m=Math.round(s/60);return m===1?'1 minuto fa':m+' minuti fa'}
 
-var state={view:'dash',cli:null,tab:'dati',q:'',reg:'',fcl:'',ftipo:'',fst:'',pmode:'colonne',calMonth:0,doccl:'',bil:null,gsc:'c5',dst:'',amlf:''};
+var state={view:'dash',cli:null,tab:'dati',q:'',reg:'',fcl:'',ftipo:'',fst:'',pmode:'colonne',calMonth:0,doccl:'',bil:null,gsc:'c5',dst:'',amlf:'',pcli:'c5'};
 
 /* ---------- utilità ---------- */
 function scadStato(s){if(s.st==='chiusa')return{c:'ok',t:'Chiusa'};var n=diff(s.d);if(n<0)return{c:'bad',t:'Scaduta'};if(n<=7)return{c:'warn',t:'Entro 7 giorni'};return{c:'ok',t:'In regola'}}
@@ -747,7 +787,7 @@ function vDash(){
  var ora=new Date().getHours(),saluto=ora<13?'Buongiorno':(ora<18?'Buon pomeriggio':'Buonasera');
  return '<h1>'+saluto+'</h1><p class="sub">'+TODAY.toLocaleDateString('it-IT',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+'</p>'
  +'<div class="grid g4" style="margin-bottom:14px">'+kpi(scad.length,'Scadenze scadute','bad','scad')+kpi(sett.length,'Scadenze nei prossimi 7 giorni','warn','sett')+kpi(docMancanti().length,'Documenti mancanti','','doc')+kpi(Math.round(da),'Parcelle da incassare','','fatt',1)+'</div>'
- +'<div class="card bnr"><div class="t"><b>Collegato ai fogli Google dello studio</b><span>Prima nota e bilanci si aggiornano da soli quando lei o un collaboratore scrivete nel foglio.</span></div>'+syncChip()+'<button class="btn" id="gotosheets2">Guarda la sincronizzazione</button></div>'
+ +'<div class="card bnr"><div class="t"><b>Collegato ai fogli Google e al programma di contabilità</b><span>Prima nota e bilanci si aggiornano da soli quando lei o un collaboratore scrivete nel foglio, o quando importa i dati dal suo programma.</span></div>'+syncChip()+'<button class="btn" id="gotosheets2">Veda la sincronizzazione</button><button class="btn sec" id="impbtn">Importa dal suo programma</button></div>'
  +'<div class="grid g2">'
  +'<div class="card"><h2>Da fare questa settimana</h2><div class="list">'+(scad.concat(sett).slice(0,7).map(function(s){var st=scadStato(s);return '<div class="item"><div class="t"><b>'+esc(s.tipo)+' · '+esc(cl(s.c).nome)+'</b><span>'+esc(s.desc)+' · '+fmt(s.d)+'</span></div><span class="pill '+st.c+'">'+st.t+'</span></div>'}).join(''))+'</div></div>'
  +'<div class="card"><h2>Bilanci 2026 in preparazione</h2><div class="list">'+BIL.map(function(b){var f=b.srl?FASI_SRL:FASI_SP,r=calc(b.c);return '<div class="item"><div class="t"><b>'+esc(cl(b.c).nome)+'</b><span>'+esc(f[b.fase])+' · ricavi '+eur0(r.ric)+'</span></div><button class="btn sec sm" data-bil="'+b.c+'" data-nav-bil>Apri</button></div>'}).join('')+'</div></div>'
@@ -778,7 +818,7 @@ function vCli(){
  var body='';
  if(state.tab==='dati'){
   body='<div class="grid g2"><div class="card"><h2>Dati anagrafici</h2><dl class="kv"><dt>Tipo</dt><dd>'+esc(c.tipo)+'</dd><dt>Regime fiscale</dt><dd>'+regPill(c.regime)+'</dd><dt>Partita IVA</dt><dd>'+c.piva+'</dd><dt>Email</dt><dd>'+esc(c.email)+'</dd><dt>Telefono</dt><dd>'+esc(c.tel)+'</dd><dt>Città</dt><dd>'+esc(c.citta)+'</dd></dl></div>'
-  +'<div class="card"><h2>Deleghe e accessi</h2><dl class="kv"><dt>Cassetto fiscale</dt><dd>'+dStat(c.cassetto)+'</dd><dt>Delega F24</dt><dd><span class="pill ok">Attiva</span></dd><dt>Modalità F24</dt><dd>'+esc(c.f24.m)+'</dd><dt>PEC</dt><dd>'+(c.pec==='ok'?'<span class="pill ok">Attiva</span>':'<span class="pill warn">Mancante</span>')+'</dd><dt>Firma e consenso</dt><dd>'+(c.firma==='ok'?'<span class="pill ok">Firmato</span>':'<span class="pill warn">Da firmare</span>')+'</dd></dl></div></div>';
+  +'<div class="card"><h2>Deleghe e accessi</h2><dl class="kv"><dt>Cassetto fiscale</dt><dd>'+dStat(c.cassetto)+'</dd><dt>Delega F24</dt><dd>'+(c.cassetto.s==='manca'?'<span class="pill warn">Non attiva</span>':'<span class="pill ok">Attiva</span>')+'</dd><dt>Modalità F24</dt><dd>'+esc(c.f24.m)+'</dd><dt>PEC</dt><dd>'+(c.pec==='ok'?'<span class="pill ok">Attiva</span>':'<span class="pill warn">Mancante</span>')+'</dd><dt>Firma e consenso</dt><dd>'+(c.firma==='ok'?'<span class="pill ok">Firmato</span>':'<span class="pill warn">Da firmare</span>')+'</dd></dl></div></div>';
  }
  if(state.tab==='scad'){var s=SCAD.filter(function(x){return x.c===c.id}).sort(function(a,b){return a.d-b.d});
   body='<div class="card"><div class="list">'+(s.length?s.map(function(x){var st=scadStato(x);return '<div class="item"><div class="t"><b>'+esc(x.tipo)+'</b><span>'+esc(x.desc)+' · '+fmt(x.d)+'</span></div><span class="pill '+st.c+'">'+st.t+'</span></div>'}).join(''):'<p class="sub">Nessuna scadenza.</p>')+'</div></div>';}
@@ -902,6 +942,7 @@ function vSheets(){
  +'<p class="hint"><b>Provi lei:</b> cambi un importo nel foglio (per esempio gli incassi di settembre) e guardi il bilancio aggiornarsi da solo.</p>'
  +'<div class="row" style="margin-top:10px"><button class="btn" id="simtype">Veda cosa succede quando un collaboratore scrive nel foglio</button></div></div>'
  +'<div><div class="row" style="margin-bottom:10px">'+syncChip()+'</div><div id="livecard">'+liveCard(cid)+'</div>'
+ +'<div class="card" style="margin-top:14px"><h2>Usa un programma di contabilità?</h2><p class="pipelabel" style="margin:-6px 0 10px">Il gestionale importa anche i file esportati dal programma che lo studio usa già, e le fatture elettroniche scaricate dal cassetto fiscale.</p><button class="btn sec" id="impbtn">Importa dal programma di contabilità</button></div>'
  +'<div class="card" style="margin-top:14px"><h2>Scrivi dal gestionale nel foglio</h2><p class="pipelabel" style="margin:-6px 0 10px">Funziona anche al contrario: la riga compare subito nel foglio Google.</p><input type="text" id="addesc" placeholder="Descrizione, per esempio: Fattura energia elettrica" aria-label="Descrizione"><div class="row" style="margin:8px 0 0"><select id="adconto" aria-label="Conto">'+CONTI_COSTO.filter(function(k){return k!=='Ammortamenti'}).map(function(k){return '<option>'+k+'</option>'}).join('')+'</select><div class="grow"><input type="text" id="adimp" inputmode="decimal" placeholder="Importo €" aria-label="Importo"></div><button class="btn" id="adsend">Scrivi nel foglio</button></div></div>'
  +'<div class="card" style="margin-top:14px"><h2>Ultime sincronizzazioni</h2><div class="list logl" id="synclog">'+logHtml()+'</div></div></div></div>'
  +'<p class="pipelabel" style="margin-top:16px">Demo: qui il foglio è simulato. Nella versione vera il gestionale si collega ai fogli Google dello studio con il collegamento ufficiale di Google, e decide lei quali fogli condividere e con chi, nel rispetto della privacy dei clienti. Se lo studio non usa fogli Google, lo stesso collegamento funziona con i file esportati dal programma di contabilità.</p>';
@@ -972,7 +1013,8 @@ function vDich(){
  +rows.map(function(x){return '<tr><td><b>'+esc(cl(x.c).nome)+'</b></td><td data-l="Modello">'+esc(x.m)+'</td><td>'+dPill(x)+'</td><td data-l="Manca">'+(x.miss?esc(x.miss):'—')+'</td><td>'+(x.st==='Pronta da inviare'?'<button class="btn sm" data-dsend="'+x.id+'">Segna come inviata</button>':(x.st==='In attesa del cliente'?'<button class="btn sec sm" data-dok="'+x.id+'">Documenti arrivati</button>':''))+'</td></tr>'}).join('')
  +(rows.length?'':'<tr><td colspan="5" style="color:var(--muted)">Nessuna dichiarazione con questo stato.</td></tr>')+'</tbody></table></div>'
  +'<div class="row" style="margin-top:14px"><button class="btn sec" id="csvdich">Esporta CSV</button></div>'
- +'<div class="card" style="margin-top:4px"><h2>Calendario fiscale di novembre 2026</h2><div class="list">'+CAL_NOV.map(function(x){var n=diff(x[0]);return '<div class="item"><div class="t"><b>'+fmt(x[0])+'</b><span>'+esc(x[1])+'</span></div><span class="pill '+(n<0?'info':(n<=7?'warn':'ok'))+'">'+(n<0?'Passata':(n===0?'Oggi':'Tra '+n+' '+(n===1?'giorno':'giorni')))+'</span></div>'}).join('')+'</div></div>';
+ +cpbCard()
+ +'<div class="card" style="margin-top:14px"><h2>Calendario fiscale di novembre 2026</h2><div class="list">'+CAL_NOV.map(function(x){var n=diff(x[0]);return '<div class="item"><div class="t"><b>'+fmt(x[0])+'</b><span>'+esc(x[1])+'</span></div><span class="pill '+(n<0?'info':(n<=7?'warn':'ok'))+'">'+(n<0?'Passata':(n===0?'Oggi':'Tra '+n+' '+(n===1?'giorno':'giorni')))+'</span></div>'}).join('')+'</div></div>';
 }
 function amlCard(cid,full){var a=AML[cid],al=amlAlerts(cid);
  if(a.liv==='Esclusa')return '<div class="card"><div class="item" style="border:0;padding:0"><div class="t"><b>Adeguata verifica non richiesta</b><span>Per questo cliente lo studio prepara e trasmette solo la dichiarazione: la regola tecnica n. 2 lo esclude dall\'adeguata verifica. Resta comunque nel calcolo dell\'autovalutazione del rischio dello studio.</span></div><span class="pill info">Esclusa</span></div></div>';
@@ -1000,6 +1042,61 @@ function amlModal(cid){var c=cl(cid),a=AML[cid];
   a.liv=$('amll').value;a.r=+$('amlr').value;a.ult=new Date(TODAY);a.doc=diff(a.doc)<0?addDays(3650):a.doc;a.prox=addDays(a.liv==='Semplificata'?1095:(a.liv==='Rafforzata'?180:365)); /* frequenza decisa dallo studio */closeModal();toast('Verifica registrata nel fascicolo');render()}}
 function reddBox(){var rows=REDD.map(function(r){return {c:r[0],e:r[1],h:r[2],v:r[1]/r[2]}}).sort(function(a,b){return a.v-b.v});var mx=Math.max.apply(null,rows.map(function(r){return r.v}));
  return '<div class="card" style="margin-top:14px"><h2>Quanto rende ogni cliente</h2><p class="sub" style="margin:-6px 0 12px">Onorari dell\'anno divisi per le ore registrate sulle sue pratiche. In alto i clienti che rendono meno.</p><div class="hb eh">'+rows.map(function(r,i){var low=r.v<40;return '<div class="hbr"><span class="hbl">'+esc(cl(r.c).nome)+'</span><span class="hbt" title="'+esc(cl(r.c).nome)+': '+eur0(r.e)+' in '+r.h+' ore"><i style="width:'+Math.max(4,Math.round(r.v/mx*100))+'%;--i:'+i+';'+(low?'background:var(--warn)':'')+'"></i></span><b style="width:auto;white-space:nowrap">'+Math.round(r.v)+' €/h</b></div>'}).join('')+'</div><p class="hint" style="margin:12px 0 0"><span class="sem warn"></span>Sotto i 40 € l\'ora: incarichi da rivedere o da riprezzare.</p></div>'}
+
+function ivaPill(st){return '<span class="pill '+(st==='Pagato'?'ok':(st==='F24 pronto'?'acc':(st==='Calcolata'?'info':'warn')))+'">'+st+'</span>'}
+function vIva(){
+ var tot=IVA.filter(function(x){return x.st!=='Da calcolare'&&x.st!=='Pagato'}).reduce(function(a,x){return a+ivaDue(x)},0),pr=IVA.filter(function(x){return x.st==='F24 pronto'}).length,dc=IVA.filter(function(x){return x.st==='Da calcolare'}).length;
+ return '<h1>IVA e F24</h1><p class="sub">Liquidazioni del periodo calcolate dalle fatture registrate, con l\'anteprima del modello F24 pronta da controllare.</p>'
+ +'<div class="grid g4" style="margin-bottom:14px"><div class="card stat"><div class="n">'+eur0(tot)+'</div><div class="l">IVA calcolata da versare il 16 novembre</div></div><div class="card stat"><div class="n cu" data-n="'+IVA.length+'">'+IVA.length+'</div><div class="l">Liquidazioni del periodo</div></div><div class="card stat"><div class="n cu" data-n="'+pr+'" style="color:var(--accent)">'+pr+'</div><div class="l">F24 pronti</div></div><div class="card stat"><div class="n cu" data-n="'+dc+'" style="color:var(--warn)">'+dc+'</div><div class="l">Da calcolare</div></div></div>'
+ +'<div class="tablewrap"><table><thead><tr><th>Cliente</th><th>Periodo</th><th class="num">IVA a debito</th><th class="num">IVA a credito</th><th class="num">Da versare</th><th>Stato</th><th></th></tr></thead><tbody>'
+ +IVA.map(function(x){return '<tr><td><b>'+esc(cl(x.c).nome)+'</b>'+(x.note?'<div class="hint">'+esc(x.note)+'</div>':'')+'</td><td data-l="Periodo">'+esc(x.per)+'</td><td class="num" data-l="Debito">'+(x.st==='Da calcolare'?'—':eur(x.deb))+'</td><td class="num" data-l="Credito">'+(x.st==='Da calcolare'?'—':eur(x.cred))+'</td><td class="num" data-l="Da versare">'+(x.st==='Da calcolare'?'—':eur(ivaDue(x)))+'</td><td>'+ivaPill(x.st)+'</td><td>'+(x.st==='Da calcolare'?'<button class="btn sm" data-ivacalc="'+x.id+'">Calcola</button>':(x.st==='Pagato'?'':'<button class="btn '+(x.st==='F24 pronto'?'':'sec ')+'sm" data-ivaf24="'+x.id+'">'+(x.st==='F24 pronto'?'Apri F24':'Prepara F24')+'</button>'))+'</td></tr>'}).join('')
+ +'</tbody></table></div>'
+ +'<div class="card" style="margin-top:14px"><h2>Clienti senza liquidazione IVA</h2><div class="list">'+CLIENTI.filter(function(c){return !IVA.some(function(x){return x.c===c.id})}).map(function(c){var why=c.regime==='Forfettario'?'Regime forfettario: non applica l\'IVA':(c.regime==='Lavoratore dipendente'?'Senza partita IVA':'Prestazioni sanitarie esenti da IVA');return '<div class="item"><div class="t"><b>'+esc(c.nome)+'</b><span>'+why+'</span></div></div>'}).join('')+'</div></div>';
+}
+function f24Modal(id){var x=IVA.filter(function(k){return k.id===id})[0],c=cl(x.c),due=ivaDue(x);
+ modal('<h2>Anteprima F24 · '+esc(c.nome)+'</h2><p class="sub" style="margin-bottom:10px">Sezione Erario · scadenza 16 novembre 2026 · '+esc(c.f24.m.toLowerCase())+'</p>'
+ +'<div class="tablewrap"><table style="min-width:0"><thead><tr><th>Codice tributo</th><th>Anno di riferimento</th><th class="num">Importo a debito</th></tr></thead><tbody><tr><td><b>'+x.cod+'</b></td><td>2026</td><td class="num">'+eur(due)+'</td></tr></tbody></table></div>'
+ +'<p class="hint" style="margin:10px 0 0">'+(x.tipo==='Trimestrale'?'Importo comprensivo dell\'1% di interessi previsto per i trimestrali. ':'')+'IVA a debito '+eur(x.deb)+' meno IVA a credito '+eur(x.cred)+'.</p>'
+ +'<div class="actions"><button class="btn" id="f24ok">Segna come pagato</button><button class="btn sec" id="f24csv">Esporta</button><button class="btn sec" data-close>Chiudi</button></div>');
+ if(x.st==='Calcolata'){x.st='F24 pronto'}
+ $('f24ok').onclick=function(){x.st='Pagato';SCAD.forEach(function(sc){if(sc.c===x.c&&sc.d-DT(2026,11,16)===0&&/IVA/.test(sc.desc))sc.st='chiusa'});closeModal();toast('F24 di '+c.nome+' segnato come pagato');render()};
+ $('f24csv').onclick=function(){exportCsv('F24 '+c.nome,['Sezione','Codice tributo','Anno','Importo'],[['Erario',x.cod,'2026',due.toFixed(2).replace('.',',')]])};
+}
+function ivaCalc(id){var x=IVA.filter(function(k){return k.id===id})[0];
+ modal('<h2>Liquidazione · '+esc(cl(x.c).nome)+'</h2><ul class="prog" id="prog"><li><i></i>Lettura delle fatture emesse e ricevute</li><li><i></i>Calcolo IVA a debito e a credito</li><li><i></i>Interessi dell\'1% per i trimestrali</li><li><i></i>Liquidazione pronta</li></ul>');
+ var li=document.querySelectorAll('#prog li'),i=0;(function g(){if(i>0){li[i-1].className='ok';li[i-1].querySelector('i').textContent='✓'}if(i>=li.length){x.st='Calcolata';setTimeout(function(){closeModal();toast('Liquidazione calcolata: '+eur(ivaDue(x))+' da versare');render()},450);return}li[i].className='run';i++;setTimeout(g,550)})()}
+function cpbCard(){
+ return '<div class="card" style="margin-top:14px"><h2>Concordato preventivo biennale 2026-2027</h2><p class="sub" style="margin:-6px 0 12px">Adesione entro lunedì 2 novembre 2026, insieme alla dichiarazione. Il confronto è la valutazione dello studio.</p><div class="list">'
+ +CPB.map(function(x){var d=x.prop-x.prev;return '<div class="item"><div class="t"><b>'+esc(cl(x.c).nome)+'</b><span>Reddito proposto '+eur0(x.prop)+' · previsto dallo studio '+eur0(x.prev)+' ('+(d<0?'proposta più bassa di '+eur0(-d):'proposta più alta di '+eur0(d))+')</span></div><span class="pill '+(x.st==='Ha aderito'?'ok':(x.st==='Da decidere'?'warn':'info'))+'">'+x.st+'</span></div>'}).join('')+'</div></div>'}
+function vPortale(){
+ var cid=state.pcli,c=cl(cid),on=PORTALE[cid];
+ var sc=SCAD.filter(function(x){return x.c===cid&&x.st!=='chiusa'}).sort(function(a,b){return a.d-b.d}).slice(0,3);
+ var dm=DOCS.filter(function(d){return d.c===cid&&d.st==='mancante'});
+ var ric=DICH.filter(function(x){return x.c===cid&&x.st==='Inviata'});
+ var f=IVA.filter(function(x){return x.c===cid&&x.st!=='Da calcolare'&&x.st!=='Pagato'});
+ var nOn=Object.keys(PORTALE).filter(function(k){return PORTALE[k]}).length;
+ var phone='<div class="phone"><div class="pscreen"><div class="pbar"><b>9:41</b><span>●●● ▮</span></div><div class="phead"><small>Area clienti dello studio</small><b>Buongiorno, '+esc(/Società|Studio|Ditta/.test(c.tipo)?c.nome:c.nome.split(' ')[0])+'</b></div>'
+ +(on?('<div class="pcard2"><small>Prossime scadenze</small>'+(sc.length?sc.map(function(x){return '<div class="prow"><span>'+esc(x.desc)+'</span><b>'+fmt(x.d)+'</b></div>'}).join(''):'<div class="prow"><span>Nessuna scadenza</span></div>')+'</div>'
+ +(f.length?'<div class="pcard2"><small>Da pagare</small>'+f.map(function(x){return '<div class="prow"><span>F24 IVA '+esc(x.per.toLowerCase())+'</span><b>'+eur(ivaDue(x))+'</b></div>'}).join('')+'</div>':'')
+ +'<div class="pcard2"><small>Documenti da mandare</small>'+(dm.length?dm.map(function(d){return '<div class="prow"><span>'+esc(d.tipo)+'</span><a class="pbtn" href="#carica-'+cid+'">Carica</a></div>'}).join(''):'<div class="prow"><span>Tutto ricevuto, grazie</span></div>')+'</div>'
+ +'<div class="pcard2"><small>Ricevute e dichiarazioni</small>'+(ric.length?ric.map(function(x){return '<div class="prow"><span>Ricevuta modello '+esc(x.m)+'</span><b class="plink">PDF</b></div>'}).join(''):'<div class="prow"><span>Nessuna ricevuta</span></div>')+'</div>'):'<div class="pcard2"><small>Accesso non ancora attivo</small><div class="prow"><span>Lo studio non ha ancora inviato l\'invito a questo cliente.</span></div></div>')
+ +'</div></div>';
+ return '<h1>Area clienti</h1><p class="sub">Ogni cliente vede dal telefono le sue scadenze, gli F24 da pagare, i documenti da mandare e le ricevute. Meno telefonate e meno «mi rimanda la ricevuta?».</p>'
+ +'<div class="grid g4" style="margin-bottom:14px"><div class="card stat"><div class="n cu" data-n="'+nOn+'">'+nOn+'</div><div class="l">Clienti con accesso attivo su '+CLIENTI.length+'</div></div><div class="card stat"><div class="n cu" data-n="'+DICH.filter(function(x){return x.st==='Inviata'}).length+'">'+DICH.filter(function(x){return x.st==='Inviata'}).length+'</div><div class="l">Ricevute disponibili ai clienti</div></div></div>'
+ +'<div class="split2"><div><div class="card"><h2>Guardi cosa vede il cliente</h2><div class="f"><label for="pcli">Cliente</label><select id="pcli">'+CLIENTI.map(function(k){return '<option value="'+k.id+'"'+(k.id===cid?' selected':'')+'>'+esc(k.nome)+(PORTALE[k.id]?'':' · accesso non attivo')+'</option>'}).join('')+'</select></div>'
+ +'<div class="setrow" style="margin-top:6px"><div class="t"><b>Accesso all\'area clienti</b><span>'+(on?'Attivo: il cliente entra con il suo telefono.':'Non attivo: il cliente non vede ancora nulla.')+'</span></div>'+(on?'<span class="pill ok">Attivo</span>':'<button class="btn sm" id="pinv">Invia l\'invito</button>')+'</div></div>'
+ +'<div class="card" style="margin-top:14px"><h2>Cosa trova il cliente</h2><div class="list"><div class="item"><div class="t"><b>Scadenze e F24</b><span>Le sue scadenze e gli importi da pagare, sempre aggiornati dallo studio.</span></div></div><div class="item"><div class="t"><b>Documenti da mandare</b><span>Carica le foto dei documenti mancanti, che finiscono nella sua cartella.</span></div></div><div class="item"><div class="t"><b>Ricevute</b><span>Scarica da solo le ricevute delle dichiarazioni inviate.</span></div></div></div></div></div>'
+ +'<div>'+phone+'</div></div>';
+}
+
+function impModal(){
+ modal('<h2>Importa dal programma di contabilità</h2><p class="sub" style="margin-bottom:8px">Scelga cosa importare: il gestionale riconosce i clienti, abbina i conti e aggiorna bilanci e scadenze. Nella demo il file è simulato.</p>'
+ +'<div class="f"><label for="impt">Cosa importa</label><select id="impt"><option>Esportazione della prima nota (Excel o CSV)</option><option>Fatture elettroniche dal cassetto fiscale (XML)</option><option>Anagrafica clienti (Excel o CSV)</option></select></div>'
+ +'<div id="impout"></div><div class="actions"><button class="btn" id="impgo">Avvia l\'importazione</button><button class="btn sec" data-close>Annulla</button></div>');
+ $('impgo').onclick=function(){var t=$('impt').value,b=this;b.setAttribute('aria-disabled','true');b.onclick=null;
+  var st=['Lettura del file','Riconoscimento dei clienti','Abbinamento dei conti','Controllo dei doppioni','Aggiornamento di bilanci e scadenze'];
+  $('impout').innerHTML='<ul class="prog" id="prog">'+st.map(function(x){return '<li><i></i>'+x+'</li>'}).join('')+'</ul>';
+  var li=document.querySelectorAll('#prog li'),i=0;(function g(){if(i>0){li[i-1].className='ok';li[i-1].querySelector('i').textContent='✓'}if(i>=li.length){var n=/XML/.test(t)?86:(/Anagrafica/.test(t)?12:214);$('impout').innerHTML+='<div class="card" style="margin-top:10px;background:var(--soft)"><b>'+n+' '+(/Anagrafica/.test(t)?'clienti verificati, nessun doppione':'registrazioni importate per 4 clienti, nessun doppione')+'</b><div class="pipelabel">Bilanci e scadenze sono già aggiornati.</div></div>';SYNC.log.unshift({d:new Date(),t:'Importazione: '+t.toLowerCase(),w:'Titolare dello studio'});b.textContent='Fatto';return}li[i].className='run';i++;setTimeout(g,520)})()}}
 function vHow(){
  var sezioni=[
   ['Dashboard','Mostra a colpo d\'occhio cosa richiede attenzione oggi.',['Controlli le scadenze scadute e quelle della settimana.','Guardi i documenti mancanti e le pratiche da firmare.','Apra la sezione indicata per intervenire.']],
@@ -1011,6 +1108,8 @@ function vHow(){
   ['Google Fogli','Collega il gestionale ai fogli Google che lo studio usa già.',['Lei e i collaboratori continuate a scrivere nei vostri fogli.','Ogni modifica arriva nel gestionale in pochi secondi, e viceversa.','Bilanci, scadenze e report restano sempre aggiornati, senza ricopiare.']],
   ['Dichiarativi','Segue la campagna Redditi, IRAP e 770 cliente per cliente.',['Mostra subito cosa è inviato, cosa è pronto e cosa aspetta documenti.','Il conto alla rovescia segue il termine vero di invio.','Un clic segna la dichiarazione come inviata o i documenti come arrivati.']],
   ['Antiriciclaggio','Tiene in ordine adeguata verifica e fascicoli di ogni cliente.',['Avvisa quando un documento scade o una verifica va aggiornata.','Registra la nuova verifica con i controlli spuntati e la data.','Riepiloga gli adempimenti dello studio: autovalutazione, formazione, conservazione. I clienti con la sola dichiarazione sono segnati come esclusi.']],
+  ['IVA e F24','Calcola le liquidazioni del periodo e prepara l\'F24.',['Vede subito quanto deve versare ogni cliente e per quale scadenza.','Un clic calcola la liquidazione, compresi gli interessi dei trimestrali.','L\'anteprima F24 riporta codice tributo, anno e importo.']],
+  ['Area clienti','Dà a ogni cliente uno spazio sul telefono.',['Il cliente vede scadenze, F24 da pagare e documenti da mandare.','Scarica da solo le ricevute delle dichiarazioni.','Lo studio decide a chi attivare l\'accesso.']],
   ['Fatturazione','Tiene il conto delle parcelle e di quanto rende ogni cliente.',['Controlli totale emesso, incassato e in ritardo.','Individui le parcelle da sollecitare.','Scopre i clienti che rendono poco rispetto alle ore che richiedono.']],
   ['Agenda','Unisce appuntamenti e scadenze in un solo calendario.',['Sfogli i mesi con le frecce.','Appuntamenti e scadenze hanno colori diversi.','Controlli l\'elenco dei prossimi appuntamenti sotto il calendario.']]
  ];
@@ -1027,7 +1126,7 @@ function vUpload(id){
 }
 
 /* ---------- shell e eventi ---------- */
-var NAV=[['dash','Dashboard'],['ana','Anagrafica clienti'],['scad','Scadenzario'],['dich','Dichiarativi'],['doc','Documenti'],['prat','Pratiche'],['bil','Bilanci'],['sheets','Google Fogli'],['aml','Antiriciclaggio'],['fatt','Fatturazione'],['agenda','Agenda'],['how','Come funziona']];
+var NAV=[['dash','Dashboard'],['ana','Anagrafica clienti'],['scad','Scadenzario'],['dich','Dichiarativi'],['doc','Documenti'],['prat','Pratiche'],['bil','Bilanci'],['sheets','Google Fogli'],['iva','IVA e F24'],['aml','Antiriciclaggio'],['portale','Area clienti'],['fatt','Fatturazione'],['agenda','Agenda'],['how','Come funziona']];
 var IC={glass:'<svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 6.2c1-.9 2.2-1.2 3.4-1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
  flat:'<svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="2" fill="currentColor" opacity=".9"/></svg>',
  sun:'<svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="currentColor"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
@@ -1043,11 +1142,12 @@ function render(){
  var key=state.view+'|'+(state.cli||'')+'|'+(state.bil||'');
  var animate=key!==lastView;lastView=key;
  var v=state.view,main='',y=window.pageYOffset,oldNav=document.querySelector('.nav'),ns=oldNav?oldNav.scrollLeft:0;
- if(v==='dash')main=vDash();else if(v==='ana')main=state.cli?vCli():vAna();else if(v==='scad')main=vScad();else if(v==='doc')main=vDoc();else if(v==='prat')main=vPrat();else if(v==='bil')main=vBil();else if(v==='dich')main=vDich();else if(v==='aml')main=vAml();else if(v==='sheets')main=vSheets();else if(v==='fatt')main=vFatt();else if(v==='agenda')main=vAgenda();else main=vHow();
+ if(v==='dash')main=vDash();else if(v==='ana')main=state.cli?vCli():vAna();else if(v==='scad')main=vScad();else if(v==='doc')main=vDoc();else if(v==='prat')main=vPrat();else if(v==='bil')main=vBil();else if(v==='dich')main=vDich();else if(v==='iva')main=vIva();else if(v==='portale')main=vPortale();else if(v==='aml')main=vAml();else if(v==='sheets')main=vSheets();else if(v==='fatt')main=vFatt();else if(v==='agenda')main=vAgenda();else main=vHow();
  var nav=NAV.map(function(n){var cnt='';
   if(n[0]==='scad'&&scadCount())cnt='<span class="count" title="Scadenze scadute">'+scadCount()+'</span>';
   if(n[0]==='doc'&&docMancanti().length)cnt='<span class="count w" title="Documenti mancanti">'+docMancanti().length+'</span>';
   if(n[0]==='dich'&&dichAperte().length)cnt='<span class="count w" title="Dichiarazioni da completare">'+dichAperte().length+'</span>';
+  if(n[0]==='iva'&&IVA.filter(function(x){return x.st==='Da calcolare'}).length)cnt='<span class="count w" title="Liquidazioni da calcolare">'+IVA.filter(function(x){return x.st==='Da calcolare'}).length+'</span>';
   if(n[0]==='aml'&&amlCount())cnt='<span class="count" title="Clienti con documenti o verifiche scaduti">'+amlCount()+'</span>';
   if(n[0]==='sheets')cnt='<span class="live" title="Sincronizzazione attiva"></span>';
   return '<button data-nav="'+n[0]+'"'+(v===n[0]?' aria-current="page"':'')+'>'+n[1]+cnt+'</button>'}).join('');
@@ -1088,6 +1188,11 @@ function bind(){
  on('backbil',function(){state.bil=null;render()});
  on('gotosheets',function(){go('sheets')});on('gotosheets2',function(){go('sheets')});
  on('genbil',genBozza);on('csvbil',function(){csvBil(state.bil)});
+ [].forEach.call(r.querySelectorAll('[data-ivacalc]'),function(b){b.onclick=function(){ivaCalc(b.getAttribute('data-ivacalc'))}});
+ [].forEach.call(r.querySelectorAll('[data-ivaf24]'),function(b){b.onclick=function(){f24Modal(b.getAttribute('data-ivaf24'));render()}});
+ [].forEach.call(r.querySelectorAll('#impbtn'),function(b){b.onclick=impModal});
+ var pc=$('pcli');if(pc)pc.onchange=function(){state.pcli=pc.value;render()};
+ on('pinv',function(){PORTALE[state.pcli]=true;toast('Invito inviato a '+cl(state.pcli).nome);render()});
  on('csvdich',function(){exportCsv('dichiarativi 2026',['Cliente','Modello','Stato','Data invio','Cosa manca'],DICH.map(function(x){return [cl(x.c).nome,x.m,x.st,x.d?iso(x.d):'',x.miss||'']}))});
  on('csvana',function(){exportCsv('clienti',['Cliente','Tipo','Regime','Partita IVA','Email','Telefono','Città'],CLIENTI.map(function(c){return [c.nome,c.tipo,c.regime,c.piva,c.email,c.tel,c.citta]}))});
  on('csvscad',function(){var rows=SCAD.filter(function(s){return (!state.fcl||s.c===state.fcl)&&(!state.ftipo||s.tipo===state.ftipo)&&(!state.fst||scadStato(s).t===state.fst)}).sort(function(a,b){return a.d-b.d});exportCsv('scadenzario',['Data','Tipo','Cliente','Descrizione','Stato'],rows.map(function(s){return [iso(s.d),s.tipo,cl(s.c).nome,s.desc,scadStato(s).t]}))});
@@ -1138,7 +1243,7 @@ var MV={key:'',ind:null,viewN:0,
   T(function(){G.fromTo(t,{opacity:0,y:7},{opacity:1,y:0,duration:.3,ease:'power3.out',stagger:.02,clearProps:'transform,opacity'})})},
  after:function(animate){
   MV.placeInd(animate);
-  var st=state,key=[st.view,st.cli,st.tab,st.pmode,st.reg,st.fcl,st.ftipo,st.fst,st.doccl,st.calMonth,st.bil,st.gsc,st.dst,st.amlf].join('|');
+  var st=state,key=[st.view,st.cli,st.tab,st.pmode,st.reg,st.fcl,st.ftipo,st.fst,st.doccl,st.calMonth,st.bil,st.gsc,st.dst,st.amlf,st.pcli].join('|');
   var changed=key!==MV.key;MV.key=key;
   if(animate)MV.enterView();else if(changed)MV.listIn()},
  modalIn:function(fresh){if(!CAN||!fresh)return;var m=$('modal'),s=$('sheet');
